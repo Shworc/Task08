@@ -39,12 +39,12 @@ resource "azurerm_kubernetes_cluster" "aks" {
 }
 
 resource "azurerm_role_assignment" "kubelet_acrpull" {
-  scope                = module.acr.acr_id
-  #scope                = var.acr_id
+  #scope = module.acr.acr_id
+  scope                = var.acr_id
   role_definition_name = "AcrPull"
   #principal_id = azurerm_user_assigned_identity.nodepool_identity.principal_id
-  principal_id         = module.aks.kubelet_identity.object_id
-  #principal_id         = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
+  #principal_id = var.kubelet_identity_object_id
+  principal_id = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
 }
 
 resource "azurerm_key_vault_access_policy" "key_vault_policy" {
