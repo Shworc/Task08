@@ -27,9 +27,9 @@ resource "azurerm_container_registry_task" "build_docker_image" {
 
 resource "azurerm_container_registry_task_schedule_run_now" "run_build_docker_image" {
   container_registry_task_id = azurerm_container_registry_task.build_docker_image.id
-  /*depends_on = [
+  depends_on = [
     azurerm_container_registry_task.build_docker_image
-  ]*/
+  ]
 }
 
 
