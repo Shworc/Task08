@@ -9,14 +9,15 @@ tags = {
 aci_sku = "Standard"
 
 # ACR 
-# context_repo_path = "https://github.com/Shworc/Task08.git"
-context_repo_access_token = "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"
-acr_sku = "Basic"
+context_repo_path         = "https://github.com/Shworc/Task08.git"
+context_repo_access_token = "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"
+git_pat                   = "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"
+acr_sku                   = "Basic"
 
 # KeyVault
-keyvault_sku_name = "${keyvault_sku}"
+keyvault_sku_name = "standard"
 
 # Redis
-redis_sku_name           = "${redis_sku}"
-redis_hostname_secret    = "${redis_hostname}"
-redis_primary_key_secret = "${redis_primary_key}"
+redis_sku_name           = "Basic"
+redis_hostname_secret    = "redis-hostname"
+redis_primary_key_secret = "redis-primary-key"
