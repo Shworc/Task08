@@ -85,6 +85,7 @@ module "redis_cache" {
 
   depends_on = [
     module.keyvault
+    azurerm_key_vault_access_policy.redis_secret_policy
   ]
 }
 

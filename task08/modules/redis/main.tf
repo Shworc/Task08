@@ -17,6 +17,7 @@ resource "azurerm_key_vault_secret" "redis_primary_key" {
 }
 
 resource "azurerm_key_vault_secret" "redis_hostname" {
+  count = var.create_redis_secrets ? 1 : 0
   name         = var.redis_hostname_secret
   value        = azurerm_redis_cache.redis.hostname
   key_vault_id = var.key_vault_id
