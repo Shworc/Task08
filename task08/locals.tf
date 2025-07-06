@@ -3,7 +3,7 @@ locals {
   aci_name                   = "${var.name_prefix}-ci"
   acr_name                   = "${replace(var.name_prefix, "-", "")}cr"
   aks_name                   = "${var.name_prefix}-aks"
-  keyvault_name              = "${var.name_prefix}-kkv"
+  keyvault_name              = "${var.name_prefix}-kvv"
   redis_name                 = "${var.name_prefix}-redis"
   safe_redis_hostname_secret = replace(var.redis_hostname_secret, "_", "-")
   redis_primary_key_secret   = replace(var.redis_hostname_secret, "_", "-")
