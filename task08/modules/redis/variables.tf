@@ -37,3 +37,9 @@ variable "tags" {
   description = "A mapping of tags that should be assigned to resources"
   type        = map(string)
 }
+
+variable "create_redis_secrets" {
+  description = "Toggle to enable or disable Redis secret creation"
+  type        = bool
+  default     = true
+}

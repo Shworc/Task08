@@ -81,11 +81,11 @@ module "redis_cache" {
   key_vault_id             = module.keyvault.key_vault_id
   redis_hostname_secret    = var.redis_hostname_secret
   redis_primary_key_secret = var.redis_primary_key_secret
+  create_redis_secrets     = true
   tags                     = var.tags
 
   depends_on = [
     module.keyvault
-    azurerm_key_vault_access_policy.redis_secret_policy
   ]
 }
 
