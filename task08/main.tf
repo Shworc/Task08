@@ -146,3 +146,37 @@ data "kubernetes_service" "service" {
   }
   depends_on = [kubectl_manifest.service]
 }
+
+resource "azurerm_storage_account" "app_storage" {
+  name                     = "stor${random_id.sa_suffix.hex}"
+  resource_group_name      = azurerm_resource_group.resource_group.name
+  location                 = var.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  tags                     = var.tags
+}
+
+resource "random_id" "sa_suffix" {
+  byte_length = 4
+}
+
+resource "azurerm_storage_container" "app_container" {
+  name                  = "app-blob-container"
+  storage_account_name  = azurerm_storage_account.app_storage.name
+  container_access_type = "blob"
+}
+
+resource "archive_file" "app_archive" {
+  type        = "tar.gz"
+  source_dir  = "${path.root}/application"
+  output_path = "${path.root}/application.tar.gz"
+}
+
+resource "azurerm_storage_blob" "app_blob" {
+  name                   = "application.tar.gz"
+  storage_account_name   = azurerm_storage_account.app_storage.name
+  storage_container_name = azurerm_storage_container.app_container.name
+  type                   = "Block"
+  source                 = archive_file.app_archive.output_path
+}
+
