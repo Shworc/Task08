@@ -31,6 +31,11 @@ variable "context_repo_path" {
   type        = string
 }
 
+variable "context_repo_access_token" {
+  description = "Repository access token for building docker image"
+  type        = string
+}
+
 variable "git_pat" {
   description = "Token for access to repository"
   type        = string

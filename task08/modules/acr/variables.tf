@@ -37,3 +37,9 @@ variable "tags" {
   description = "A mapping of tags that should be assigned to resources."
   type        = map(string)
 }
+
+variable "git_pat" {
+  description = "Token for access to repository"
+  type        = string
+  sensitive   = true
+}

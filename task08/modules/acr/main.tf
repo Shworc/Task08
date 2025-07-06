@@ -15,9 +15,10 @@ resource "azurerm_container_registry_task" "build_docker_image" {
     os = "Linux"
   }
   docker_step {
-    dockerfile_path      = "${path.root}/task08/application/Dockerfile"
-    context_path         = var.context_repo_path
-    context_access_token = var.context_repo_access_token
+    dockerfile_path = "${path.root}/task08/application/Dockerfile"
+    context_path    = var.context_repo_path
+    #context_access_token = var.context_repo_access_token
+    context_access_token = var.git_pat
     image_names          = ["${var.prefix}-app:latest"]
     push_enabled         = true
   }
