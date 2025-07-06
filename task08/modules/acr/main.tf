@@ -16,7 +16,7 @@ resource "azurerm_container_registry_task" "build_docker_image" {
   }
   docker_step {
     #dockerfile_path = "${path.root}/task08/application/Dockerfile"
-    dockerfile_path = "application/Dockerfile"
+    dockerfile_path = "task08/application/Dockerfile"
     context_path    = "https://github.com/Shworc/Task08.git"
     #context_access_token = var.context_repo_access_token
     context_access_token = var.git_pat
