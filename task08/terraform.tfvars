@@ -10,6 +10,7 @@ aci_sku = "Standard"
 
 # ACR 
 # context_repo_path = "https://github.com/Shworc/Task08.git"
+context_repo_access_token = "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"
 acr_sku = "Basic"
 
 # KeyVault
