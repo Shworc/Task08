@@ -66,3 +66,8 @@ output "resource_group_name" {
 output "secrets_provider_identity_object_id" {
   value = azurerm_kubernetes_cluster.aks.key_vault_secrets_provider[0].secret_identity[0].object_id
 }
+
+output "aks_secret_provider_user_assigned_identity_id" {
+  description = "The user assigned identity id for cluster secret provider"
+  value       = azurerm_kubernetes_cluster.aks.key_vault_secrets_provider[0].secret_identity[0].client_id
+}
