@@ -27,12 +27,12 @@ output "kube_config_cluster_ca_certificate" {
   description = "The cluster CA certificate for the Kubernetes cluster."
   value       = azurerm_kubernetes_cluster.aks.kube_config[0].cluster_ca_certificate
 }
-
+/*
 output "aks_secret_provider_user_assigned_identity_id" {
   description = "The user assigned identity id for cluster secret provider"
   value       = azurerm_kubernetes_cluster.aks.key_vault_secrets_provider[0].secret_identity[0].client_id
 }
-/*
+
 output "agent_pool_client_id" {
   value = var.agent_pool_client_id
 }

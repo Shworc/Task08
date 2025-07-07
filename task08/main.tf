@@ -64,12 +64,6 @@ module "aks" {
   ]
 }
 
-resource "azurerm_role_assignment" "acr_pull" {
-  principal_id         = module.aks.kubelet_identity_object_id
-  role_definition_name = "AcrPull"
-  scope                = module.acr.acr_id
-}
-
 resource "azurerm_key_vault_access_policy" "aks_secrets_policy" {
   key_vault_id       = module.keyvault.key_vault_id
   tenant_id          = data.azurerm_client_config.current.tenant_id
