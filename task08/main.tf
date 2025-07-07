@@ -40,7 +40,12 @@ module "acr" {
   git_pat                   = var.context_repo_access_token
   tags                      = var.tags
 }
-
+/*
+data "azurerm_kubernetes_cluster" "aks" {
+  name                = module.aks.name
+  resource_group_name = module.aks.resource_group_name
+}
+*/
 module "aks" {
   source = "./modules/aks"
 
@@ -57,6 +62,19 @@ module "aks" {
     module.acr,
     module.redis_cache
   ]
+}
+
+resource "azurerm_role_assignment" "acr_pull" {
+  principal_id         = module.aks.kubelet_identity_object_id
+  role_definition_name = "AcrPull"
+  scope                = module.acr.acr_id
+}
+
+resource "azurerm_key_vault_access_policy" "aks_secrets_policy" {
+  key_vault_id       = module.keyvault.key_vault_id
+  tenant_id          = data.azurerm_client_config.current.tenant_id
+  object_id          = module.aks.secrets_provider_identity_object_id
+  secret_permissions = ["Get", "List"]
 }
 
 module "keyvault" {
@@ -179,4 +197,3 @@ resource "azurerm_storage_blob" "app_blob" {
   type                   = "Block"
   source                 = archive_file.app_archive.output_path
 }
-

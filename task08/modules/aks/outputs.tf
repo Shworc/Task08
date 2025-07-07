@@ -32,3 +32,37 @@ output "aks_secret_provider_user_assigned_identity_id" {
   description = "The user assigned identity id for cluster secret provider"
   value       = azurerm_kubernetes_cluster.aks.key_vault_secrets_provider[0].secret_identity[0].client_id
 }
+/*
+output "agent_pool_client_id" {
+  value = var.agent_pool_client_id
+}
+
+/*
+output "agent_pool_client_id" {
+  value = data.azurerm_kubernetes_cluster.aks.kubelet_identity[0].client_id
+}
+
+output "kubelet_identity_object_id" {
+  #value = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
+  value = azurerm_kubernetes_cluster.aks.key_vault_secrets_provider[0].secret_identity[0].object_id
+}
+*/
+output "kubelet_identity_object_id" {
+  value = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
+}
+
+output "agent_pool_client_id" {
+  value = azurerm_kubernetes_cluster.aks.kubelet_identity[0].client_id
+}
+
+output "name" {
+  value = azurerm_kubernetes_cluster.aks.name
+}
+
+output "resource_group_name" {
+  value = azurerm_kubernetes_cluster.aks.resource_group_name
+}
+
+output "secrets_provider_identity_object_id" {
+  value = azurerm_kubernetes_cluster.aks.key_vault_secrets_provider[0].secret_identity[0].object_id
+}
