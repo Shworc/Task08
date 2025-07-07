@@ -1,5 +1,5 @@
 # General
-location    = "westeurope"
+location    = "northeurope"
 name_prefix = "cmtr-yurgas2r-mod8"
 tags = {
   Creator = "sasa_filipovic@epam.com"
