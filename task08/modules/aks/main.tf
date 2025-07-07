@@ -25,12 +25,17 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   identity {
+    type = "SystemAssigned"
+  }
+
+  /*
+  identity {
     type = "UserAssigned"
     identity_ids = [
       azurerm_user_assigned_identity.aks_identity.id
     ]
   }
-
+*/
   key_vault_secrets_provider {
     secret_rotation_enabled = true
   }
