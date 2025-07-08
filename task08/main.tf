@@ -63,14 +63,14 @@ module "aks" {
     module.redis_cache
   ]
 }
-
+/*
 resource "azurerm_key_vault_access_policy" "aks_secrets_policy" {
   key_vault_id       = module.keyvault.key_vault_id
   tenant_id          = data.azurerm_client_config.current.tenant_id
   object_id          = module.aks.secrets_provider_identity_object_id
   secret_permissions = ["Get", "List"]
 }
-
+*/
 module "keyvault" {
   source = "./modules/keyvault"
 
