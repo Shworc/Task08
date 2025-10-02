@@ -1,6 +1,6 @@
 locals {
-  rg_name                    = "${var.name_prefix}-rg"
-  aci_name                   = "${var.name_prefix}-ci"
+  rg_name  = "${var.name_prefix}-rg"
+  aci_name = "${var.name_prefix}-ci"
   #acr_name                   = "${replace(var.name_prefix, "-", "")}cr"
   acr_name                   = "${var.name_prefix}cr"
   aks_name                   = "${var.name_prefix}-aks"
