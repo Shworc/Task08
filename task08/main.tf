@@ -37,7 +37,7 @@ module "acr" {
   acr_sku                   = var.acr_sku
   context_repo_path         = var.context_repo_path
   context_repo_access_token = var.git_pat
-  #git_pat                   = var.context_repo_access_token
+  git_pat                   = var.context_repo_access_token
   tags = var.tags
 }
 /*
@@ -93,7 +93,7 @@ module "redis_cache" {
   key_vault_id             = module.keyvault.key_vault_id
   redis_hostname_secret    = var.redis_hostname_secret
   redis_primary_key_secret = var.redis_primary_key_secret
-  #create_redis_secrets     = true
+  create_redis_secrets     = true
   tags = var.tags
 
   depends_on = [
