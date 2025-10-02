@@ -38,7 +38,7 @@ module "acr" {
   context_repo_path         = var.context_repo_path
   context_repo_access_token = var.git_pat
   git_pat                   = var.context_repo_access_token
-  tags = var.tags
+  tags                      = var.tags
 }
 /*
 data "azurerm_kubernetes_cluster" "aks" {
@@ -94,7 +94,7 @@ module "redis_cache" {
   redis_hostname_secret    = var.redis_hostname_secret
   redis_primary_key_secret = var.redis_primary_key_secret
   create_redis_secrets     = true
-  tags = var.tags
+  tags                     = var.tags
 
   depends_on = [
     module.keyvault
